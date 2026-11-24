@@ -46,8 +46,11 @@ header.rolou{background:rgba(239,234,227,.78);backdrop-filter:saturate(1.4) blur
 header.escuro{background:rgba(27,24,20,.7);color:#F2ECE3;box-shadow:0 1px 0 rgba(255,255,255,.08)}
 header.escuro .logo .lc{display:block}header.escuro .logo .le{display:none}
 .logo img{height:30px;width:auto}.logo .lc{display:none}
-header nav{display:flex;gap:30px;font-size:14px}
-header nav a{opacity:.85;font-weight:500;transition:opacity .2s}header nav a:hover{opacity:1}
+header nav{display:flex;gap:6px;font-size:14px}
+header nav a{font-weight:500;padding:8px 14px;border-radius:999px;border:1px solid rgba(35,31,26,.12);background:rgba(255,255,255,.28);opacity:.9;transition:background .25s,border-color .25s,opacity .25s}
+header nav a:hover{opacity:1;background:rgba(255,255,255,.6);border-color:rgba(35,31,26,.22)}
+header.escuro nav a,.cp-noite header nav a{border-color:rgba(245,240,232,.16);background:rgba(255,255,255,.06)}
+header.escuro nav a:hover,.cp-noite header nav a:hover{background:rgba(255,255,255,.14);border-color:rgba(245,240,232,.3)}
 .cta-top{justify-self:end;height:42px;padding:0 18px;font-size:14px}
 
 /* ===== 1. capa: troféu desmontado no estúdio -> mural de trabalhos reais ===== */
@@ -282,6 +285,69 @@ summary i::after{transform:rotate(90deg)}
 details[open] summary i::after{transform:rotate(0)}
 details .resp{padding:0 40px 26px 0;color:var(--tinta2);font-size:16px}
 
+/* ===== onde estamos ===== */
+.onde{padding-block:clamp(90px,11vw,140px);background:var(--bg)}
+.onde-grade{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,56px);align-items:stretch;margin-top:clamp(36px,5vw,56px)}
+.unidades{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.unidades button{padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;background:var(--bg2);color:var(--tinta2)}
+.unidades button[aria-selected=true]{background:var(--tinta);color:#F5F0E8}
+.local{background:#FBF9F6;border-radius:24px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:22px;box-shadow:0 1px 0 var(--linha)}
+.local .nome{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.local .nome b{font-size:20px;letter-spacing:-.02em}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--bg2)}
+.status i{width:8px;height:8px;border-radius:50%;background:#C9BFB2}
+.status.aberto{color:#11804A;background:#E4F4EA}.status.aberto i{background:#16A34A;box-shadow:0 0 0 4px rgba(22,163,74,.18)}
+.status.fechado{color:#9A3B2E;background:#F6E5E1}.status.fechado i{background:#D9543F}
+.endereco{display:flex;gap:14px;align-items:flex-start}
+.endereco .ico{flex:none;width:42px;height:42px;border-radius:12px;background:var(--bg2);display:grid;place-items:center}
+.endereco .ico svg{width:20px;height:20px;stroke:var(--tinta);fill:none;stroke-width:1.8}
+.endereco p{font-size:17px;line-height:1.45;color:var(--tinta)}
+.endereco small{display:block;color:var(--mudo);font-size:14px;margin-top:2px}
+.copiar{margin-top:10px;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--tinta2);padding:8px 14px;border:1px solid var(--linha);border-radius:999px;transition:background .2s}
+.copiar:hover{background:var(--bg2)}
+.copiar svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.copiar.ok{color:#11804A;border-color:#BFE3CC;background:#E4F4EA}
+.rotas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rota{display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:14px;font-weight:600;font-size:15px;border:1px solid var(--linha);background:#fff;transition:transform .25s var(--ease),box-shadow .25s}
+.rota:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.35)}
+.rota img,.rota svg{width:22px;height:22px}
+.rota.principal{grid-column:1/-1;background:var(--tinta);color:#F5F0E8;border-color:var(--tinta)}
+.horas{border-top:1px solid var(--linha);padding-top:18px}
+.horas h4{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mudo);margin-bottom:10px}
+.horas ul{list-style:none;display:grid;gap:2px}
+.horas li{display:flex;justify-content:space-between;font-size:15px;padding:6px 10px;border-radius:8px;color:var(--tinta2)}
+.horas li.hoje{background:var(--bg2);color:var(--tinta);font-weight:600}
+.end-link{color:inherit}.end-link:hover{text-decoration:underline;text-underline-offset:3px}
+.rota{width:100%;cursor:pointer}
+.folha-fundo{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .3s}
+.folha{position:fixed;left:50%;bottom:12px;z-index:71;width:min(420px,calc(100vw - 20px));translate:-50% calc(100% + 24px);transition:translate .38s var(--ease);display:flex;flex-direction:column;gap:8px}
+.folha-aberta .folha-fundo{opacity:1;pointer-events:auto}.folha-aberta .folha{translate:-50% 0}
+.folha-caixa,.folha-cancela{background:rgba(250,250,250,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:14px;overflow:hidden}
+.folha-caixa p{text-align:center;font-size:13px;color:#8A8A8E;padding:12px;border-bottom:1px solid rgba(0,0,0,.08)}
+.folha-caixa a{display:flex;align-items:center;justify-content:center;gap:10px;height:56px;font-size:19px;color:#0A84FF;border-bottom:1px solid rgba(0,0,0,.08)}
+.folha-caixa a:last-child{border-bottom:0}
+.folha-caixa a svg{width:24px;height:24px}
+.folha-cancela{height:56px;font-size:19px;font-weight:600;color:#0A84FF;width:100%}
+.tel{font-size:14px;color:var(--mudo)}.tel a{color:var(--tinta);font-weight:600}
+.mapa{position:relative;border-radius:24px;overflow:hidden;min-height:480px;background:#E6DFD5;box-shadow:0 30px 60px -40px rgba(40,30,20,.5)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85) contrast(1.02)}
+.mapa .pino{position:absolute;left:16px;top:16px;background:#fff;border-radius:14px;padding:10px 14px;font-size:13px;box-shadow:0 8px 24px -10px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;pointer-events:none}
+.mapa .pino img{height:22px}
+
+/* ===== menu do celular ===== */
+.hamb{display:none;width:42px;height:42px;border-radius:12px;align-items:center;justify-content:center;flex-direction:column;gap:5px;justify-self:end}
+.hamb i{display:block;width:20px;height:2px;border-radius:1px;background:currentColor;transition:transform .3s var(--ease),opacity .2s}
+.menu-aberto .hamb i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-aberto .hamb i:nth-child(2){opacity:0}
+.menu-aberto .hamb i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.gaveta{position:fixed;inset:0;z-index:39;background:rgba(239,234,227,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:96px 24px 32px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s}
+.menu-aberto .gaveta{opacity:1;pointer-events:auto}
+.gaveta a.item{font-size:26px;font-weight:700;letter-spacing:-.02em;padding:14px 0;border-bottom:1px solid var(--linha);color:var(--tinta);transform:translateY(10px);opacity:0;transition:transform .4s var(--ease),opacity .4s}
+.menu-aberto .gaveta a.item{transform:none;opacity:1}
+.gaveta .btn{margin-top:auto;justify-content:center;height:54px}
+.menu-aberto header{color:var(--tinta)!important;background:transparent!important;box-shadow:none!important}
+.menu-aberto header .logo .lc{display:none!important}.menu-aberto header .logo .le{display:block!important}
+
 /* ===== 11. chamada final ===== */
 .final{background:var(--bg);padding-block:clamp(100px,13vw,170px);text-align:center}
 .final .titulo{max-width:880px;margin:0 auto}
@@ -327,7 +393,9 @@ footer img{height:26px;width:auto}
 
 /* ===== celular ===== */
 @media(max-width:900px){
-  header{grid-template-columns:1fr auto}header nav{display:none}.logo img{height:26px}.cta-top{height:40px;padding:0 14px}
+  header{grid-template-columns:1fr auto auto;gap:8px}header nav{display:none}.logo img{height:26px}.cta-top{height:40px;padding:0 14px}
+  .hamb{display:flex}
+  .onde-grade{grid-template-columns:1fr}.mapa{min-height:320px;order:-1}.rotas{grid-template-columns:1fr 1fr}
   .cp-texto{left:20px;right:20px;width:auto;top:auto;bottom:24px;translate:none}
   .cp-titulos{font-size:36px}
   .cp-veu{background:linear-gradient(transparent 35%,rgba(21,18,15,.88) 62%,rgba(21,18,15,.96))}
@@ -374,9 +442,15 @@ footer img{height:26px;width:auto}
 
 <header id="topo">
   <a class="logo" href="#"><img class="le" src="img/logo_escuro2.webp" alt="Guarart"><img class="lc" src="img/logo_claro.webp" alt=""></a>
-  <nav><a href="#produtos">Produtos</a><a href="#para-quem">Soluções</a><a href="#religiosos">Artigos religiosos</a><a href="#trabalhos">Trabalhos</a><a href="#como">Como pedir</a></nav>
+  <nav><a href="#produtos">Produtos</a><a href="#para-quem">Soluções</a><a href="#religiosos">Artigos religiosos</a><a href="#trabalhos">Trabalhos</a><a href="#como">Como pedir</a><a href="#onde">Nossa localização</a></nav>
   <a class="btn btn-wa cta-top" data-wa="Olá! Vim pelo site e quero um orçamento." data-chat=""><svg class="ico-wa"><use href="#wa"/></svg>Pedir orçamento</a>
+  <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i><i></i></button>
 </header>
+
+<div class="gaveta" id="gaveta" aria-hidden="true">
+  <a class="item" href="#produtos">Produtos</a><a class="item" href="#para-quem">Soluções</a><a class="item" href="#religiosos">Artigos religiosos</a><a class="item" href="#trabalhos">Trabalhos</a><a class="item" href="#como">Como pedir</a><a class="item" href="#onde">Nossa localização</a>
+  <a class="btn btn-wa" data-wa="Olá! Vim pelo site e quero um orçamento." data-chat=""><svg class="ico-wa"><use href="#wa"/></svg>Pedir orçamento</a>
+</div>
 
 <!-- 1. CAPA -->
 <section class="capa" id="capa"><div class="cp-palco">
@@ -508,6 +582,21 @@ footer img{height:26px;width:auto}
   </div>
 </section>
 
+<!-- ONDE ESTAMOS -->
+<section class="onde" id="onde">
+  <div class="wrap">
+    <span class="kicker" data-rv>Nossa localização</span>
+    <h2 class="titulo" data-rv="2" style="margin-top:14px;max-width:760px">Venha conhecer a loja.</h2>
+    <div class="onde-grade">
+      <div data-rv="2">
+        <div class="unidades" id="unidades"></div>
+        <div class="local" id="local"></div>
+      </div>
+      <div class="mapa" data-rv="3"><iframe id="mapaFrame" title="Mapa da loja" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="pino"><img src="img/logo_escuro2.webp" alt=""><span id="pinoTxt"></span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 11. CHAMADA FINAL -->
 <section class="final" id="contato">
   <div class="wrap">
@@ -519,7 +608,13 @@ footer img{height:26px;width:auto}
   </div>
 </section>
 <div class="cmy"></div>
-<footer><img src="img/logo_claro.webp" alt="Guarart"><span>Guarart Personalizados · Guaratinguetá, SP · desde 2009</span></footer>
+<footer><img src="img/logo_claro.webp" alt="Guarart"><span>Guarart Personalizados · R. Pres. Wenceslau Braz, 265 · Guaratinguetá, SP · desde 2009</span></footer>
+
+<div class="folha-fundo" id="folhaFundo"></div>
+<div class="folha" role="dialog" aria-label="Abrir rota com">
+  <div class="folha-caixa"><p>Abrir rota com</p><div id="folhaOps"></div></div>
+  <button class="folha-cancela" id="folhaCancela">Cancelar</button>
+</div>
 
 <!-- WhatsApp flutuante + atendimento simulado (fluxo, sem IA) -->
 <button class="wa-fab" id="waFab" aria-label="Atendimento pelo WhatsApp"><svg class="ico-wa"><use href="#wa"/></svg><span class="ponto" id="waPonto">1</span></button>
@@ -772,6 +867,56 @@ addEventListener("scroll",rolagem,{passive:true});rolagem();setInterval(()=>{if(
 (function loop(){
   const s=$("santa").getBoundingClientRect();if(s.top<innerHeight&&s.bottom>0){const k=(s.top+s.height/2-innerHeight/2)/innerHeight;$("santa").style.transform=`translateY(${k*-60}px)`}
   requestAnimationFrame(loop)})();
+
+/* ===================== ONDE ESTAMOS (dados do Google Maps; para nova unidade, adicione um item) ===================== */
+const UNIDADES=[
+  {nome:"Loja Guaratinguetá",rua:"R. Pres. Wenceslau Braz, 265",bairro:"Vila Comendador, Guaratinguetá - SP, 12511-100",lat:-22.804329,lng:-45.2067309,tel:"(12) 3122-4869",
+   horas:[["Domingo",null],["Segunda","09:00","18:00"],["Terça","09:00","18:00"],["Quarta","09:00","18:00"],["Quinta","09:00","18:00"],["Sexta","09:00","18:00"],["Sábado","09:00","12:30"]]},
+];
+const icoPin='<svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+const icoCopia='<svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>';
+const icoMaps='<svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>';
+const icoWaze='<svg viewBox="0 0 24 24"><path fill="#33CCFF" d="M20.5 9.6C19.8 5.4 16.1 2.5 12 2.5 7.1 2.5 3.3 6.4 3.3 11.1c0 1.2-.3 2.1-1 2.6-.4.3-.3.9.2 1 1.2.4 2.2 1.2 2.9 2.2a8.7 8.7 0 0 0 6.6 3.1c4.9 0 9.2-4.2 8.5-10.4z"/><circle cx="9.3" cy="10" r="1.1" fill="#fff"/><circle cx="14.4" cy="10" r="1.1" fill="#fff"/><path d="M9.3 13.4c1.5 1.4 3.6 1.4 5.1 0" stroke="#fff" stroke-width="1.3" fill="none" stroke-linecap="round"/><circle cx="8" cy="20" r="1.6" fill="#1B1814"/><circle cx="16" cy="20" r="1.6" fill="#1B1814"/></svg>';
+let unidadeAtual=0;
+function statusAgora(u){const d=new Date(),h=u.horas[d.getDay()],min=d.getHours()*60+d.getMinutes();
+  if(!h[1])return["fechado","Fechado hoje"];const m=t=>{const[a,b]=t.split(":");return+a*60+ +b};
+  if(min<m(h[1]))return["fechado",`Abre hoje às ${h[1]}`];if(min>=m(h[2]))return["fechado","Fechado agora"];return["aberto",`Aberto agora · até ${h[2]}`]}
+function mostraUnidade(i){
+  unidadeAtual=i;const u=UNIDADES[i],end=`${u.rua} - ${u.bairro}`,[cls,txt]=statusAgora(u),hoje=new Date().getDay();
+  const ordem=[1,2,3,4,5,6,0];
+  $("local").innerHTML=`<div class="nome"><b>${u.nome}</b><span class="status ${cls}"><i></i>${txt}</span></div>
+    <div class="endereco"><span class="ico">${icoPin}</span><div><p><a href="#" class="end-link" id="endLink">${u.rua}<small>${u.bairro}</small></a></p><button class="copiar" id="copiar">${icoCopia}<span>Copiar endereço</span></button></div></div>
+    <button class="rota principal" id="comoChegar">${icoMaps}Como chegar</button>
+    <div class="horas"><h4>Horário de funcionamento</h4><ul>${ordem.map(k=>{const h=u.horas[k];return `<li class="${k===hoje?"hoje":""}"><span>${h[0]}</span><span>${h[1]?h[1]+" às "+h[2]:"Fechado"}</span></li>`}).join("")}</ul></div>
+    <p class="tel">Telefone da loja: <a href="tel:+55${u.tel.replace(/\D/g,"")}">${u.tel}</a></p>`;
+  $("copiar").onclick=async()=>{try{await navigator.clipboard.writeText(end)}catch{const t=document.createElement("textarea");t.value=end;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+    const b=$("copiar");b.classList.add("ok");b.querySelector("span").textContent="Endereço copiado";setTimeout(()=>{b.classList.remove("ok");b.querySelector("span").textContent="Copiar endereço"},2200)};
+  $("comoChegar").onclick=$("endLink").onclick=e=>{e.preventDefault();abreRotas(u)};
+  $("mapaFrame").src=`https://maps.google.com/maps?q=${u.lat},${u.lng}&z=16&hl=pt-BR&output=embed`;
+  $("pinoTxt").textContent=u.rua;
+  document.querySelectorAll("#unidades button").forEach((b,k)=>b.setAttribute("aria-selected",k===i));
+}
+$("unidades").innerHTML=UNIDADES.length>1?UNIDADES.map(u=>`<button role="tab">${u.nome}</button>`).join(""):"";
+$("unidades").addEventListener("click",e=>{const b=e.target.closest("button");if(b)mostraUnidade([...b.parentNode.children].indexOf(b))});
+mostraUnidade(0);
+
+/* rotas: Android usa o seletor do sistema; iPhone e computador abrem uma folha de opções */
+function abreRotas(u){
+  const ua=navigator.userAgent,android=/Android/i.test(ua),apple=/iPhone|iPad|Macintosh/i.test(ua);
+  if(android){location.href=`geo:${u.lat},${u.lng}?q=${u.lat},${u.lng}(${encodeURIComponent("Guarart")})`;return}
+  const ops=[["Google Maps",icoMaps,`https://www.google.com/maps/dir/?api=1&destination=${u.lat},${u.lng}`],["Waze",icoWaze,`https://waze.com/ul?ll=${u.lat},${u.lng}&navigate=yes`]];
+  if(apple)ops.unshift(["Mapas",'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#34C759"/><path d="M6 17l4-10 2 5 4-3-2 8z" fill="#fff"/></svg>',`https://maps.apple.com/?daddr=${u.lat},${u.lng}`]);
+  $("folhaOps").innerHTML=ops.map(([n,ic,url])=>`<a href="${url}" target="_blank" rel="noopener">${ic}<span>${n}</span></a>`).join("");
+  document.body.classList.add("folha-aberta");
+}
+const fechaFolha=()=>document.body.classList.remove("folha-aberta");
+$("folhaFundo").onclick=$("folhaCancela").onclick=fechaFolha;
+$("folhaOps").addEventListener("click",()=>setTimeout(fechaFolha,300));
+
+/* ===================== MENU DO CELULAR ===================== */
+const fechaMenu=()=>{document.body.classList.remove("menu-aberto");$("hamb").setAttribute("aria-expanded","false");document.body.style.overflow=""};
+$("hamb").onclick=()=>{const a=document.body.classList.toggle("menu-aberto");$("hamb").setAttribute("aria-expanded",a);document.body.style.overflow=a?"hidden":""};
+document.querySelectorAll("#gaveta a").forEach(a=>a.addEventListener("click",fechaMenu));
 
 /* ===================== ATENDIMENTO SIMULADO (fluxo fixo, sem IA) ===================== */
 const chat=$("chat"),corpo=$("chatCorpo"),op=$("chatOp");const R={};let iniciou=false;
