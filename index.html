@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guarart · Personalizados em Guaratinguetá desde 2009</title>
+<meta name="description" content="Troféus, medalhas, brindes corporativos, comunicação visual e artigos religiosos criados do zero em Guaratinguetá, com envio para todo o Brasil.">
+<style>
+:root{
+  --bg:#EFEAE3;--bg2:#E7E0D6;--papel:#F7F4EF;--tinta:#231F1A;--tinta2:#4A4239;--mudo:#7A7064;--linha:rgba(35,31,26,.12);
+  --escuro:#1B1814;--escuro2:#262119;--creme:#F2ECE3;--ouro:#C9A45C;
+  --wa:#25D366;--wa2:#1EBE5A;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--tinta);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1240px,100%);margin:0 auto;padding-inline:var(--pad)}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mudo)}
+.titulo{font-size:clamp(34px,4.6vw,64px);line-height:1.02;letter-spacing:-.035em;font-weight:700}
+.sub{font-size:clamp(17px,1.4vw,20px);color:var(--tinta2);max-width:560px}
+
+/* ícone oficial do WhatsApp */
+.ico-wa{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap;transition:transform .3s var(--ease),background .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px -10px rgba(37,211,102,.7)}
+.btn-wa:hover{background:var(--wa2)}
+.btn-escuro{background:var(--tinta);color:#F5F0E8}
+.btn-linha{border:1px solid rgba(35,31,26,.3)}
+
+/* revelação suave ao rolar */
+[data-rv]{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+[data-rv].on{opacity:1;transform:none}
+[data-rv="2"]{transition-delay:.1s}[data-rv="3"]{transition-delay:.2s}[data-rv="4"]{transition-delay:.3s}
+
+/* ===== cabeçalho ===== */
+header{position:fixed;inset:0 0 auto;z-index:40;height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);transition:background .4s,height .4s,box-shadow .4s}
+header.rolou{background:rgba(239,234,227,.78);backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);height:62px;box-shadow:0 1px 0 var(--linha)}
+header.escuro{background:rgba(27,24,20,.7);color:#F2ECE3;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+header.escuro .logo .lc{display:block}header.escuro .logo .le{display:none}
+.logo img{height:30px;width:auto}.logo .lc{display:none}
+header nav{display:flex;gap:30px;font-size:14px}
+header nav a{opacity:.85;font-weight:500;transition:opacity .2s}header nav a:hover{opacity:1}
+.cta-top{justify-self:end;height:42px;padding:0 18px;font-size:14px}
+
+/* ===== 1. capa: troféu desmontado no estúdio -> mural de trabalhos reais ===== */
+.capa{position:relative;height:265vh;background:#15120F}
+.cp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:#15120F}
+.cp-estudio{position:absolute;inset:0;background:#CDBFAE url(img/fundo-estudio.webp) center 70%/cover no-repeat}
+.cp-estudio::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,241,234,.9) 0%,rgba(246,241,234,.62) 30%,rgba(246,241,234,0) 56%)}
+.cp-mosaico{position:absolute;left:0;top:0;display:flex;align-items:flex-start;transform-origin:0 0}
+.cp-coluna{display:flex;flex-direction:column}
+.cp-rodando .cp-coluna.anda{animation:cpSobe var(--dur,60s) linear infinite}
+.cp-rodando .cp-coluna.anda.desce{animation-name:cpDesce}
+@keyframes cpSobe{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes cpDesce{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.cp-tile{flex:none;border-radius:14px;overflow:hidden;background:#2A251F}
+.cp-tile img{width:100%;height:100%;object-fit:cover;display:block}
+.cp-tile.destaque{position:relative;background:rgba(255,255,255,var(--b,0));box-shadow:0 30px 60px -30px rgba(0,0,0,calc(var(--b,0)*.6))}
+.cp-plano{position:absolute;inset:9% 12% 8%}
+.cp-plano img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.cp-cena3d{position:absolute;z-index:3;pointer-events:none}
+.cp-camadas{position:absolute;inset:9% 12% 8%;perspective:1700px}
+.cp-trofeu{position:absolute;inset:0;transform-style:preserve-3d}
+.cp-cam{position:absolute;inset:0;transform-style:preserve-3d}
+.cp-cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.cp-rot{position:absolute;display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:13px;font-weight:600;color:var(--tinta)}
+.cp-rot i{width:42px;height:1px;background:var(--tinta);opacity:.45}
+.cp-rot small{display:block;font-weight:400;color:var(--tinta2);font-size:12px}
+.cp-sombra{position:absolute;left:14%;right:14%;bottom:-3%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(60,45,30,.4),transparent);filter:blur(6px)}
+.cp-veu{position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(21,18,15,.94) 0%,rgba(21,18,15,.86) 27%,rgba(21,18,15,.45) 45%,rgba(21,18,15,0) 58%)}
+.cp-texto{position:absolute;z-index:5;left:var(--pad);top:50%;translate:0 -50%;width:min(520px,37vw);color:var(--tinta)}
+.cp-cmy{display:flex;gap:5px;margin-bottom:18px}.cp-cmy i{width:34px;height:4px;border-radius:2px}
+.cp-cmy i:nth-child(1){background:#00A0DC}.cp-cmy i:nth-child(2){background:#E6007E}.cp-cmy i:nth-child(3){background:#FFD500}
+.cp-texto .kicker{color:var(--tinta2);transition:color .6s}
+.cp-noite .cp-texto .kicker{color:#C9BFB2}
+.cp-titulos{position:relative;margin:16px 0 18px;min-height:3.05em;font-size:clamp(40px,4.4vw,70px);line-height:1;letter-spacing:-.045em;font-weight:700}
+.cp-titulos h1,.cp-titulos h2{position:absolute;left:0;top:0;font:inherit}
+.cp-titulos h1{opacity:0}
+.cp-titulos em{font-style:normal;color:#E6007E}
+.cp-texto p{font-size:17px;max-width:440px}
+.cp-texto .acoes{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.cp-noite .cp-texto .btn-linha{border-color:rgba(245,240,232,.4)}
+.cp-texto .btn-linha{transition:border-color .6s,transform .3s var(--ease)}
+.cp-prova{margin-top:26px;font-size:13px;opacity:0;transition:opacity .8s}
+.cp-rodando .cp-prova{opacity:1}
+.cp-role{position:absolute;left:var(--pad);bottom:26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta2);display:flex;align-items:center;gap:10px}
+.cp-role i{width:34px;height:1px;background:currentColor}
+@keyframes linha{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes entra{to{opacity:1;transform:none}}
+@keyframes aparece{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ===== 2. prova ===== */
+.prova{padding-block:clamp(72px,10vw,128px) 0;background:var(--bg)}
+.fatos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.fato{padding:30px 24px 28px;border-right:1px solid var(--linha)}
+.fato:last-child{border-right:0}
+.fato b{display:block;font-size:clamp(36px,4vw,56px);line-height:1;letter-spacing:-.04em;font-weight:700}
+.fato span{display:block;margin-top:10px;font-size:14px;color:var(--tinta2)}
+.prova-topo{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:48px;flex-wrap:wrap}
+.clientes{margin-top:56px;padding-bottom:clamp(64px,8vw,104px)}
+.clientes .kicker{text-align:center;margin-bottom:26px}
+
+/* carrossel em loop infinito */
+.loop{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.loop-trilho{display:flex;width:max-content;animation:anda var(--dur,40s) linear infinite}
+.loop:hover .loop-trilho{animation-play-state:paused}
+.loop.reverso .loop-trilho{animation-direction:reverse}
+@keyframes anda{to{transform:translateX(-50%)}}
+.marca{flex:none;padding:0 clamp(28px,3.4vw,52px);font-size:clamp(18px,1.7vw,24px);font-weight:700;letter-spacing:-.02em;color:#8E8578;white-space:nowrap;display:flex;align-items:center;gap:clamp(28px,3.4vw,52px)}
+.marca::after{content:"";width:5px;height:5px;border-radius:50%;background:#C9BFB2}
+.marca img{height:clamp(34px,3.2vw,46px);width:auto;max-width:200px;object-fit:contain}
+.marca img.alto{height:clamp(52px,5vw,70px)}
+
+/* ===== 3. manifesto (frase que acende ao rolar) ===== */
+.manifesto{background:var(--escuro);color:#5A5247;padding-block:clamp(110px,16vw,200px)}
+.manifesto p{font-size:clamp(30px,4.4vw,62px);line-height:1.12;letter-spacing:-.03em;font-weight:700;max-width:1080px}
+.manifesto p span{transition:color .4s}
+.manifesto p span.on{color:#F2ECE3}
+
+/* ===== 4. para quem é (rolagem com cena fixa) ===== */
+.quem{background:var(--papel);padding-top:clamp(90px,11vw,140px)}
+.quem-cab{margin-bottom:clamp(40px,6vw,72px)}
+.quem-corpo{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(32px,5vw,80px)}
+.quem-fixo{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.cena{position:relative;width:100%;aspect-ratio:4/5;max-height:78vh}
+.cena-grupo{position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease)}
+.cena-grupo.on{opacity:1}
+.cena-grupo .f1{position:absolute;left:0;top:0;width:78%;height:86%;border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(40,30,20,.45)}
+.cena-grupo .f2{position:absolute;right:0;bottom:0;width:44%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,30,20,.5);border:6px solid var(--papel)}
+.cena-grupo .f3{position:absolute;right:4%;top:6%;width:30%;aspect-ratio:1;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(40,30,20,.5);border:5px solid var(--papel)}
+.cena-grupo img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.cena-grupo.on img{transform:scale(1)}
+.cena-cont{position:absolute;left:18px;bottom:calc(14% + 18px);z-index:3;background:rgba(27,24,20,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#F2ECE3;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:600;letter-spacing:.14em}
+.quem-lista{padding-bottom:20vh}
+.publico{min-height:88vh;display:flex;flex-direction:column;justify-content:center;opacity:.28;transition:opacity .6s var(--ease)}
+.publico.on{opacity:1}
+.publico .num{font-size:13px;font-weight:600;letter-spacing:.2em;color:var(--mudo)}
+.publico h3{font-size:clamp(30px,3.4vw,48px);line-height:1.05;letter-spacing:-.03em;margin:14px 0 16px}
+.publico p{color:var(--tinta2);font-size:17px;max-width:470px}
+.publico ul{list-style:none;margin:26px 0 30px;display:grid;gap:0;max-width:470px}
+.publico li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--linha);font-size:15px}
+.publico li:last-child{border-bottom:1px solid var(--linha)}
+.publico li span{color:var(--mudo);font-size:13px}
+.publico .foto-mob{display:none}
+.link-wa{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:#128C4A}
+.link-wa .ico-wa{color:var(--wa)}
+.link-wa:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ===== 5. catálogo ===== */
+.catalogo{padding-block:clamp(90px,11vw,140px);background:var(--bg)}
+.cat-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:36px}
+.abas{display:flex;gap:6px;padding:6px;background:var(--bg2);border-radius:999px;overflow-x:auto;scrollbar-width:none}
+.aba{padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;color:var(--tinta2);white-space:nowrap;transition:background .3s,color .3s}
+.aba[aria-selected=true]{background:var(--tinta);color:#F5F0E8}
+.grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
+.card{opacity:0;transform:translateY(18px);animation:entra .7s var(--ease) forwards;background:#FBF9F6;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--linha);transition:box-shadow .4s var(--ease),translate .4s var(--ease)}
+.card:hover{box-shadow:0 24px 50px -28px rgba(40,30,20,.35);translate:0 -3px}
+.card .ft{position:relative;aspect-ratio:1;overflow:hidden;background:#F1EDE7}
+.card .slides{position:absolute;inset:0;display:flex;transition:transform .55s var(--ease)}
+.card .slides img{flex:none;width:100%;height:100%;object-fit:cover}
+.card .seta{position:absolute;top:50%;translate:0 -50%;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 4px 14px rgba(0,0,0,.12);display:grid;place-items:center;opacity:0;transition:opacity .3s,background .2s}
+.card .seta svg{width:16px;height:16px;stroke:var(--tinta);fill:none;stroke-width:2}
+.card .seta.ant{left:12px}.card .seta.prox{right:12px}
+.card:hover .seta{opacity:1}.card .seta:hover{background:#fff}
+.card .pontos{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px}
+.card .pontos i{width:6px;height:6px;border-radius:50%;background:rgba(35,31,26,.22);transition:background .3s,width .3s}
+.card .pontos i.on{background:var(--tinta);width:16px;border-radius:3px}
+.card .vista{position:absolute;left:12px;top:12px;font-size:11px;font-weight:600;letter-spacing:.06em;background:rgba(255,255,255,.9);border-radius:999px;padding:4px 10px;color:var(--tinta2)}
+.card .info{padding:16px 16px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card .cat{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mudo)}
+.card h4{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.card .desc{font-size:14px;color:var(--tinta2)}
+.card .selos{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.card .selos span{font-size:11.5px;color:var(--tinta2);background:var(--bg2);border-radius:6px;padding:3px 8px}
+.card .orcar{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:12px;background:var(--tinta);color:#F5F0E8;font-size:14px;font-weight:600;transition:background .25s}
+.card .orcar:hover{background:#000}
+.card .orcar .t-c{display:none}
+.card .orcar .ico-wa{width:18px;height:18px;color:var(--wa)}
+@media(hover:none){.card .seta{opacity:1}}
+
+/* ===== 6. destaque religioso ===== */
+.fe{background:var(--escuro);color:var(--creme);padding-block:clamp(100px,13vw,170px);overflow:hidden;position:relative}
+.fe::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 40%,rgba(201,164,92,.16),transparent 70%);pointer-events:none}
+.fe-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center;position:relative}
+.fe .kicker{color:var(--ouro)}
+.fe .titulo{color:#F7F2EA}
+.fe .sub{color:#BDB2A2;margin-top:20px}
+.fe-itens{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 34px}
+.fe-itens span{padding:8px 14px;border:1px solid rgba(242,236,227,.18);border-radius:999px;font-size:14px;color:#DCD2C3}
+.fe-foto{position:relative;aspect-ratio:1;max-width:620px;justify-self:end;width:100%}
+.fe-foto .grande{position:absolute;inset:0 18% 12% 0;border-radius:24px;overflow:hidden}
+.fe-foto .grande img{width:100%;height:100%;object-fit:cover}
+.fe-foto .santa{position:absolute;right:0;bottom:0;width:42%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));will-change:transform}
+.fe .loop{margin-top:clamp(70px,9vw,110px)}
+.fe .peca-loop{flex:none;width:clamp(200px,18vw,260px);margin-right:18px}
+.fe .peca-loop .ft{aspect-ratio:1;border-radius:16px;overflow:hidden;background:#2A251E}
+.fe .peca-loop img{width:100%;height:100%;object-fit:cover}
+.fe .peca-loop span{display:block;margin-top:10px;font-size:13px;color:#BDB2A2}
+
+/* ===== 7. trabalhos reais ===== */
+.trabalhos{padding-block:clamp(90px,11vw,140px) clamp(70px,9vw,110px);background:var(--papel)}
+.trabalhos .wrap{margin-bottom:44px}
+.trabalhos .loop+.loop{margin-top:18px}
+.obra{flex:none;width:clamp(220px,20vw,300px);aspect-ratio:4/5;margin-right:18px;border-radius:18px;overflow:hidden;background:#E6DFD5}
+.obra img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.obra:hover img{transform:scale(1.05)}
+
+/* ===== 8. como funciona ===== */
+.como{padding-block:clamp(90px,11vw,140px);background:var(--bg)}
+.passos{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px);margin-top:clamp(48px,6vw,80px)}
+.trilha{position:absolute;left:0;right:0;top:27px;height:1px;background:var(--linha)}
+.trilha i{position:absolute;left:0;top:0;height:100%;width:100%;background:var(--tinta);transform-origin:0 0;transform:scaleX(var(--prog,0))}
+.passo .bola{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--bg);border:1px solid rgba(35,31,26,.25);display:grid;place-items:center;font-weight:700;font-size:15px;transition:background .5s,color .5s,border-color .5s}
+.passo.on .bola{background:var(--tinta);color:#F5F0E8;border-color:var(--tinta)}
+.passo h3{font-size:24px;letter-spacing:-.02em;margin:26px 0 10px}
+.passo p{color:var(--tinta2);max-width:320px}
+
+/* ===== 9. depoimentos: mural com prints reais (WhatsApp, Instagram, Google) ===== */
+.depo{padding-block:clamp(90px,11vw,140px);background:var(--escuro2);color:var(--creme);overflow:hidden}
+.depo .kicker{color:#9E9384}
+.depo .titulo{color:#F7F2EA}
+.depo-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)}
+.nota-google{display:flex;align-items:center;gap:16px;background:#fff;color:#202124;border-radius:18px;padding:16px 22px;box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
+.nota-google b{font-size:40px;line-height:1;letter-spacing:-.03em}
+.nota-google .est{display:flex;gap:2px}.nota-google small{display:block;font-size:13px;color:#5F6368;margin-top:4px}
+.est svg{width:16px;height:16px}
+.mural .loop+.loop{margin-top:18px}
+.mural .loop{-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.dc{flex:none;margin-right:18px;border-radius:18px;font-size:14px;line-height:1.45;align-self:flex-start}
+.mural .loop-trilho{align-items:flex-start}
+/* Google */
+.dc.g{width:340px;background:#fff;color:#202124;padding:18px 18px 16px}
+.dc.g .top{display:flex;align-items:center;gap:10px}
+.dc.g .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:15px}
+.dc.g .nm{font-weight:600;font-size:14px}.dc.g .sub2{font-size:12px;color:#70757A}
+.dc.g .gl{margin-left:auto;width:22px;height:22px}
+.dc.g .linha{display:flex;align-items:center;gap:8px;margin:10px 0 6px;font-size:12px;color:#70757A}
+.dc.g p{color:#3C4043}
+/* Instagram */
+.dc.i{width:330px;background:#fff;color:#262626;overflow:hidden}
+.dc.i .post{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #EFEFEF;font-size:12.5px}
+.dc.i .post img{width:40px;height:40px;border-radius:6px;object-fit:cover}
+.dc.i .post b{font-weight:600}
+.dc.i .post .ig{margin-left:auto;width:20px;height:20px}
+.dc.i .com{display:flex;gap:10px;padding:14px}
+.dc.i .av{flex:none;width:32px;height:32px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#F9CE34,#EE2A7B,#6228D7)}
+.dc.i .av span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#fff;border:2px solid #fff;font-size:12px;font-weight:700;color:#262626}
+.dc.i .tx b{font-weight:600;margin-right:4px}
+.dc.i .meta{display:flex;gap:14px;margin-top:6px;font-size:12px;color:#8E8E8E;font-weight:600}
+.dc.i .cor{margin-left:auto;align-self:center;width:14px;height:14px;color:#ED4956}
+/* WhatsApp */
+.dc.w{width:330px;background:#0B141A;padding:0 0 12px;overflow:hidden}
+.dc.w .wt{display:flex;align-items:center;gap:10px;background:#1F2C34;color:#E9EDEF;padding:10px 12px;font-size:13px}
+.dc.w .wt .av{width:30px;height:30px;border-radius:50%;background:#6B7C85;display:grid;place-items:center;color:#fff;font-weight:600;font-size:12px}
+.dc.w .wt small{display:block;color:#8696A0;font-size:11px}
+.dc.w .wt .ico-wa{margin-left:auto;width:18px;height:18px;color:var(--wa)}
+.dc.w .ms{display:flex;flex-direction:column;gap:5px;padding:12px 10px 0}
+.dc.w .msg{max-width:86%;padding:6px 9px 4px;border-radius:8px;font-size:13.5px;line-height:1.35;color:#E9EDEF;background:#202C33;align-self:flex-start}
+.dc.w .msg.minha{align-self:flex-end;background:#005C4B}
+.dc.w .msg small{display:block;text-align:right;font-size:10px;color:#8696A0}
+.mural .loop:hover .loop-trilho{animation-play-state:paused}
+.dc{transition:transform .5s var(--ease)}.dc:hover{transform:translateY(-4px)}
+
+/* ===== 10. dúvidas ===== */
+.duvidas{padding-block:clamp(90px,11vw,140px);background:var(--papel)}
+.duv-grade{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px)}
+details{border-top:1px solid var(--linha)}
+details:last-child{border-bottom:1px solid var(--linha)}
+summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;justify-content:space-between;gap:20px;font-size:18px;font-weight:600;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:22px;height:22px;position:relative;margin-top:3px}
+summary i::before,summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:currentColor;translate:-50% -50%;transition:transform .35s var(--ease)}
+summary i::after{transform:rotate(90deg)}
+details[open] summary i::after{transform:rotate(0)}
+details .resp{padding:0 40px 26px 0;color:var(--tinta2);font-size:16px}
+
+/* ===== 11. chamada final ===== */
+.final{background:var(--bg);padding-block:clamp(100px,13vw,170px);text-align:center}
+.final .titulo{max-width:880px;margin:0 auto}
+.final .sub{margin:22px auto 36px}
+.final .btn-wa{height:60px;padding:0 34px;font-size:17px}
+.final .btn-wa .ico-wa{width:24px;height:24px}
+.final .info{margin-top:30px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--mudo)}
+footer{background:var(--escuro);color:#9E9384;padding:44px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px}
+footer img{height:26px;width:auto}
+.cmy{height:3px;background:linear-gradient(90deg,#00A0DC 0 33.3%,#E6007E 33.3% 66.6%,#FFD500 66.6%)}
+
+/* ===== WhatsApp flutuante + atendimento simulado ===== */
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);transition:transform .3s var(--ease)}
+.wa-fab:hover{transform:scale(1.06)}
+.wa-fab .ico-wa{width:32px;height:32px}
+.wa-fab .ponto{position:absolute;top:-2px;right:-2px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#FF3B30;border:2px solid #fff;color:#fff;font-size:12px;font-weight:700;line-height:18px;text-align:center;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.wa-fab .ponto.on{transform:scale(1)}
+.wa-fab.chama{animation:chama .6s ease 2}
+@keyframes chama{0%,100%{transform:none}30%{transform:scale(1.08) rotate(-6deg)}60%{transform:scale(1.05) rotate(5deg)}}
+.chat{position:fixed;right:22px;bottom:96px;z-index:61;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 130px));border-radius:22px;overflow:hidden;background:#EFE7DD;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);display:flex;flex-direction:column;transform-origin:100% 100%;transform:scale(.92) translateY(10px);opacity:0;pointer-events:none;transition:transform .35s var(--ease),opacity .3s}
+.chat.aberto{transform:none;opacity:1;pointer-events:auto}
+.chat-topo{background:#075E54;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.chat-topo .av{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden}
+.chat-topo .av img{width:34px}
+.chat-topo b{display:block;font-size:15px}.chat-topo small{font-size:12px;opacity:.8}
+.chat-topo button{margin-left:auto;width:32px;height:32px;border-radius:50%;color:#fff;font-size:22px;line-height:1}
+.chat-corpo{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:8px;background:#EFE7DD}
+.m{max-width:82%;padding:8px 11px;border-radius:10px;font-size:14px;line-height:1.4;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .3s var(--ease)}
+.m.bot{align-self:flex-start;background:#fff;border-top-left-radius:2px}
+.m.eu{align-self:flex-end;background:#D9FDD3;border-top-right-radius:2px}
+.digitando{align-self:flex-start;background:#fff;border-radius:10px;padding:10px 12px;display:flex;gap:4px}
+.digitando i{width:6px;height:6px;border-radius:50%;background:#9AA5AB;animation:pisca 1s infinite}
+.digitando i:nth-child(2){animation-delay:.15s}.digitando i:nth-child(3){animation-delay:.3s}
+@keyframes pisca{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.opcoes{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px 14px;background:#EFE7DD;border-top:1px solid rgba(0,0,0,.06)}
+.opcoes button{background:#fff;border:1px solid #CFE9DB;color:#0A7C4A;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:600}
+.opcoes button:hover{background:#F0FBF4}
+.opcoes form{display:flex;gap:6px;width:100%}
+.opcoes input{flex:1;border:0;border-radius:999px;padding:10px 14px;font:inherit;font-size:14px;background:#fff;outline:none}
+.opcoes .enviar{width:42px;height:42px;border-radius:50%;background:#00A884;color:#fff;display:grid;place-items:center}
+.opcoes .final-wa{width:100%;justify-content:center;height:46px;background:var(--wa);color:#fff;border:0;display:flex;align-items:center;gap:8px;font-size:15px}
+
+/* ===== celular ===== */
+@media(max-width:900px){
+  header{grid-template-columns:1fr auto}header nav{display:none}.logo img{height:26px}.cta-top{height:40px;padding:0 14px}
+  .cp-texto{left:20px;right:20px;width:auto;top:auto;bottom:24px;translate:none}
+  .cp-titulos{font-size:36px}
+  .cp-veu{background:linear-gradient(transparent 35%,rgba(21,18,15,.88) 62%,rgba(21,18,15,.96))}
+  .cp-rot{display:none}.cp-texto .acoes .btn{flex:1;justify-content:center;height:48px}
+  .cp-estudio::before{background:linear-gradient(transparent 40%,rgba(246,241,234,.85) 62%,rgba(246,241,234,.95))}
+  .cp-veu{background:linear-gradient(rgba(21,18,15,0) 30%,rgba(21,18,15,.9) 52%,rgba(21,18,15,.97))}
+  .cp-titulos{font-size:34px;min-height:2.1em;margin:12px 0 12px}
+  .cp-texto p{font-size:15px}.cp-texto .acoes{margin-top:20px}.cp-prova{margin-top:14px}
+  .cp-role{display:none}
+  .card .info{padding:12px 12px 14px}
+  .card h4{font-size:15px}.card .desc{font-size:13px}
+  .card .selos{display:none}
+  .card .orcar{height:40px;font-size:13px;margin-top:12px;white-space:nowrap;gap:6px}
+  .card .orcar .t-l{display:none}.card .orcar .t-c{display:inline}
+  .card .orcar .ico-wa{width:16px;height:16px}
+  .card .cat{font-size:10px;letter-spacing:.1em}
+  .card .seta{width:30px;height:30px}.card .seta.ant{left:6px}.card .seta.prox{right:6px}
+  .wa-fab{width:54px;height:54px;right:16px;bottom:16px}.wa-fab .ico-wa{width:28px;height:28px}
+  .chat{right:12px;bottom:80px;width:calc(100vw - 24px);height:min(560px,calc(100svh - 110px))}
+  .dc.g,.dc.i,.dc.w{width:280px}
+  .nota-google{padding:12px 16px}.nota-google b{font-size:32px}
+  .fatos{grid-template-columns:repeat(2,minmax(0,1fr))}.fato:nth-child(2){border-right:0}.fato:nth-child(-n+2){border-bottom:1px solid var(--linha)}
+  .quem-corpo{grid-template-columns:1fr}.quem-fixo{display:none}
+  .publico{min-height:0;opacity:1;padding-bottom:64px}
+  .publico .foto-mob{display:block;aspect-ratio:4/3;border-radius:18px;overflow:hidden;margin-bottom:22px}
+  .publico .foto-mob img{width:100%;height:100%;object-fit:cover}
+  .quem-lista{padding-bottom:0}
+  .grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fe-grade,.duv-grade{grid-template-columns:1fr}
+  .fe-foto{justify-self:stretch}
+  .passos{grid-template-columns:1fr;gap:40px}.trilha{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}
+  [data-rv]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- logotipo oficial do WhatsApp -->
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+</svg>
+
+<header id="topo">
+  <a class="logo" href="#"><img class="le" src="img/logo_escuro2.webp" alt="Guarart"><img class="lc" src="img/logo_claro.webp" alt=""></a>
+  <nav><a href="#produtos">Produtos</a><a href="#para-quem">Soluções</a><a href="#religiosos">Artigos religiosos</a><a href="#trabalhos">Trabalhos</a><a href="#como">Como pedir</a></nav>
+  <a class="btn btn-wa cta-top" data-wa="Olá! Vim pelo site e quero um orçamento." data-chat=""><svg class="ico-wa"><use href="#wa"/></svg>Pedir orçamento</a>
+</header>
+
+<!-- 1. CAPA -->
+<section class="capa" id="capa"><div class="cp-palco">
+  <div class="cp-estudio" id="cpEstudio"></div>
+  <div class="cp-mosaico" id="cpMosaico"></div>
+  <div class="cp-veu" id="cpVeu"></div>
+  <div class="cp-cena3d" id="cpCena"><div class="cp-camadas"><div class="cp-trofeu" id="cpTrofeu"><div class="cp-sombra" id="cpSombra"></div></div></div></div>
+  <div class="cp-texto" id="cpTexto">
+    <div class="cp-cmy"><i></i><i></i><i></i></div>
+    <span class="kicker">Guaratinguetá · desde 2009</span>
+    <div class="cp-titulos"><h2 id="cpH2">Cada peça começa do zero.</h2><h1 id="cpH1">Transformando ideias em <em>experiências</em>.</h1></div>
+    <p id="cpSub">Troféus, medalhas, brindes, comunicação visual e artigos religiosos criados do zero, com envio para todo o Brasil.</p>
+    <div class="acoes"><a class="btn btn-wa" data-wa="Olá! Vim pelo site e quero um orçamento." data-chat=""><svg class="ico-wa"><use href="#wa"/></svg>Pedir orçamento</a><a class="btn btn-linha" href="#produtos">Ver produtos</a></div>
+    <p class="cp-prova">Cada quadro ao lado é uma peça real feita pela Guarart.</p>
+  </div>
+  <div class="cp-role" id="cpRole"><i></i>Role para ver</div>
+</div></section>
+
+<!-- 2. PROVA -->
+<section class="prova" id="prova">
+  <div class="wrap">
+    <div class="prova-topo">
+      <h2 class="titulo" data-rv style="max-width:720px">Há mais de 15 anos fazendo peças que viram lembrança.</h2>
+      <p class="sub" data-rv="2">Uma loja de Guaratinguetá que cria cada peça do zero, da arte à entrega, para eventos, empresas, igrejas e comércios.</p>
+    </div>
+    <div class="fatos" data-rv="2">
+      <div class="fato"><b data-conta="2009" data-de="1990">2009</b><span>Ano em que a Guarart começou</span></div>
+      <div class="fato"><b>4</b><span>Frentes: eventos, brindes, comunicação visual e artigos religiosos</span></div>
+      <div class="fato"><b>Do zero</b><span>A arte de cada peça é criada para você</span></div>
+      <div class="fato"><b>Brasil</b><span>Envio para todas as regiões</span></div>
+    </div>
+  </div>
+  <div class="clientes">
+    <p class="kicker">Quem já confiou na Guarart</p>
+    <div class="loop" style="--dur:46s"><div class="loop-trilho" id="marcas"></div></div>
+  </div>
+</section>
+
+<!-- 3. MANIFESTO -->
+<section class="manifesto"><div class="wrap"><p id="frase">Cada peça começa do zero. A arte é criada para você, aprovada por você e produzida aqui em Guaratinguetá, para virar a lembrança de um momento que importa.</p></div></section>
+
+<!-- 4. PARA QUEM É -->
+<section class="quem" id="para-quem">
+  <div class="wrap">
+    <div class="quem-cab"><span class="kicker" data-rv>Soluções</span><h2 class="titulo" data-rv="2" style="margin-top:14px;max-width:760px">Soluções para cada tipo de cliente.</h2></div>
+    <div class="quem-corpo">
+      <div class="quem-fixo"><div class="cena" id="cena"></div></div>
+      <div class="quem-lista" id="publicos"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CATÁLOGO -->
+<section class="catalogo" id="produtos">
+  <div class="wrap">
+    <div class="cat-cab">
+      <div><span class="kicker" data-rv>Produtos</span><h2 class="titulo" data-rv="2" style="margin-top:14px">Escolha por onde começar.</h2></div>
+      <div class="abas" role="tablist" id="abas" data-rv="3"></div>
+    </div>
+    <div class="grade" id="grade"></div>
+  </div>
+</section>
+
+<!-- 6. DESTAQUE RELIGIOSO -->
+<section class="fe" id="religiosos">
+  <div class="wrap fe-grade">
+    <div>
+      <span class="kicker" data-rv>Artigos religiosos</span>
+      <h2 class="titulo" data-rv="2" style="margin-top:14px">Fé feita com cuidado.</h2>
+      <p class="sub" data-rv="3">Nichos, santinhas, lembranças e brindes religiosos produzidos em Guaratinguetá, para lojas, revendedores, paróquias e romarias.</p>
+      <div class="fe-itens" data-rv="3"><span>Nichos com LED</span><span>Santinhas</span><span>Lembranças de romaria</span><span>Brindes para paróquias</span><span>Revenda</span></div>
+      <div data-rv="4"><a class="btn btn-wa" data-wa="Olá! Vim pelo site e tenho interesse em artigos religiosos." data-chat="Artigos religiosos"><svg class="ico-wa"><use href="#wa"/></svg>Falar sobre artigos religiosos</a></div>
+    </div>
+    <div class="fe-foto" data-rv="2">
+      <div class="grande"><img src="img/lp/prod/religiosos0.webp" alt="Nicho com LED da Guarart"></div>
+      <img class="santa" id="santa" src="img/vitrine/santinha.webp" alt="Santinha de Nossa Senhora Aparecida">
+    </div>
+  </div>
+  <div class="loop" style="--dur:50s"><div class="loop-trilho" id="loopFe"></div></div>
+</section>
+
+<!-- 7. TRABALHOS REAIS -->
+<section class="trabalhos" id="trabalhos">
+  <div class="wrap"><span class="kicker" data-rv>Trabalhos reais</span><h2 class="titulo" data-rv="2" style="margin-top:14px;max-width:820px">Feitos aqui e entregues para quem confiou.</h2></div>
+  <div class="loop" style="--dur:60s"><div class="loop-trilho" id="obras1"></div></div>
+  <div class="loop reverso" style="--dur:70s"><div class="loop-trilho" id="obras2"></div></div>
+</section>
+
+<!-- 8. COMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="wrap">
+    <span class="kicker" data-rv>Como pedir</span>
+    <h2 class="titulo" data-rv="2" style="margin-top:14px;max-width:760px">Do primeiro contato à entrega.</h2>
+    <div class="passos" id="passos">
+      <div class="trilha"><i></i></div>
+      <div class="passo"><div class="bola">01</div><h3>Conte a sua ideia</h3><p>Chame no WhatsApp e mande o que tiver: referência, logo, quantidade e a data do evento.</p></div>
+      <div class="passo"><div class="bola">02</div><h3>Aprove a arte</h3><p>A nossa equipe cria a arte do zero e ajusta com você até ficar do jeito que você imaginou.</p></div>
+      <div class="passo"><div class="bola">03</div><h3>Receba pronta</h3><p>Produzimos em Guaratinguetá. Você retira na loja ou recebemos o endereço e enviamos para todo o Brasil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. DEPOIMENTOS -->
+<section class="depo">
+  <div class="wrap depo-cab">
+    <div><span class="kicker" data-rv>Quem recebeu</span><h2 class="titulo" data-rv="2" style="margin-top:14px;max-width:720px">O que os clientes dizem sobre a Guarart.</h2></div>
+    <a class="nota-google" data-rv="3" href="https://www.google.com/maps/place/Guarart+Personalizados/@-22.804329,-45.2067309,17z" target="_blank" rel="noopener">
+      <svg width="34" height="34" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+      <div><div style="display:flex;align-items:center;gap:10px"><b>4,6</b><span class="est" id="estNota"></span></div><small>71 avaliações no Google</small></div>
+    </a>
+  </div>
+  <div class="mural">
+    <div class="loop" style="--dur:70s"><div class="loop-trilho" id="mural1"></div></div>
+    <div class="loop reverso" style="--dur:80s"><div class="loop-trilho" id="mural2"></div></div>
+  </div>
+</section>
+
+<!-- 10. DÚVIDAS -->
+<section class="duvidas" id="duvidas">
+  <div class="wrap duv-grade">
+    <div><span class="kicker" data-rv>Dúvidas</span><h2 class="titulo" data-rv="2" style="margin-top:14px">Antes de pedir.</h2><p class="sub" data-rv="3" style="margin-top:18px">Não achou a sua pergunta? Responda pelo WhatsApp, a gente explica tudo.</p></div>
+    <div data-rv="2">
+      <details><summary>Tem pedido mínimo?<i></i></summary><div class="resp">Não. A produção é sob demanda, então dá para pedir desde poucas peças até grandes quantidades.</div></details>
+      <details><summary>Qual é o prazo de produção?<i></i></summary><div class="resp">Varia conforme o produto e a quantidade. O prazo exato vem junto com o orçamento. Para eventos, chame com antecedência para garantir a data.</div></details>
+      <details><summary>Vocês criam a arte?<i></i></summary><div class="resp">Sim. A arte é criada do zero pela nossa equipe e enviada para a sua aprovação antes de entrar em produção.</div></details>
+      <details><summary>Vocês entregam fora de Guaratinguetá?<i></i></summary><div class="resp">Sim, enviamos para todo o Brasil. Quem é da região também pode retirar na loja.</div></details>
+      <details><summary>Fazem para revenda?<i></i></summary><div class="resp">Sim, principalmente nos artigos religiosos. Fale com a gente pelo WhatsApp para condições de revenda.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CHAMADA FINAL -->
+<section class="final" id="contato">
+  <div class="wrap">
+    <span class="kicker" data-rv>Vamos criar</span>
+    <h2 class="titulo" data-rv="2" style="margin-top:14px">Qual vai ser a próxima peça que você vai entregar?</h2>
+    <p class="sub" data-rv="3">Mande a sua ideia agora. O orçamento é pelo WhatsApp e sem compromisso.</p>
+    <div data-rv="4"><a class="btn btn-wa" data-wa="Olá! Vim pelo site e quero um orçamento." data-chat=""><svg class="ico-wa"><use href="#wa"/></svg>Chamar no WhatsApp</a></div>
+    <div class="info" data-rv="4"><span>(12) 98304-6673</span><span>Guaratinguetá · SP</span><a href="https://www.instagram.com/guarart_personalizados/" target="_blank" rel="noopener">@guarart_personalizados</a></div>
+  </div>
+</section>
+<div class="cmy"></div>
+<footer><img src="img/logo_claro.webp" alt="Guarart"><span>Guarart Personalizados · Guaratinguetá, SP · desde 2009</span></footer>
+
+<!-- WhatsApp flutuante + atendimento simulado (fluxo, sem IA) -->
+<button class="wa-fab" id="waFab" aria-label="Atendimento pelo WhatsApp"><svg class="ico-wa"><use href="#wa"/></svg><span class="ponto" id="waPonto">1</span></button>
+<div class="chat" id="chat" role="dialog" aria-label="Atendimento Guarart">
+  <div class="chat-topo"><div class="av"><img src="img/logo_escuro2.webp" alt=""></div><div><b>Guarart</b><small>online</small></div><button id="chatFecha" aria-label="Fechar">×</button></div>
+  <div class="chat-corpo" id="chatCorpo"></div>
+  <div class="opcoes" id="chatOp"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const FONE="5512983046673",WA=t=>`https://wa.me/${FONE}?text=${encodeURIComponent(t)}`;
+const waIco='<svg class="ico-wa"><use href="#wa"/></svg>';
+document.querySelectorAll("[data-wa]").forEach(a=>{a.href=WA(a.dataset.wa);a.target="_blank";a.rel="noopener"});
+const estatico=location.search.includes("estatico");
+if(estatico)document.head.insertAdjacentHTML("beforeend","<style>.card{animation:none!important;opacity:1!important;transform:none!important}[data-rv]{opacity:1!important;transform:none!important}</style>");
+
+/* ===================== 1. CAPA: troféu desmontado -> mural de trabalhos reais ===================== */
+const CP_IG=["Dd7ATxboyqh","DcwSMDXI1rN","Dee-AFjI5IW","DbYxppmoX_U","Dcy6B5yobWp","DboJ5o0lIdD","DfAbYMMIYqX","DbYoAePoOi0","DcefJ6hoZgF","DbqThCForOf","DdFBBJKhdzC","DbbFTMxIIq8","DfkhWSYo2kz","Dcgys4iorpN","DbobSbQBH6s","Dbq5PiMBYoP","DfnKfCwoVPM","DbWmCyvvvt6"].map(n=>`img/lp/ig/${n}.webp`);
+const CP_PR=["eventos0","eventos1","eventos2","eventos3","eventos4","brindes0","brindes1","brindes3","brindes4","brindes5","visual1","visual2","visual3","visual4","religiosos0","religiosos1","religiosos3","religiosos5"].map(n=>`img/lp/prod/${n}.webp`);
+const CP_CAT=["medalha-1-frente","roleta-1-frente"].map(n=>`img/lp/cat/${n}.webp`);
+const CP_FOTOS=[];for(let i=0;i<18;i++){CP_FOTOS.push(CP_IG[i],CP_PR[i]);if(CP_CAT[i])CP_FOTOS.push(CP_CAT[i])}
+// troféu em 3 partes; a impressão preta e a colorida andam juntas para o texto não se separar
+const CP_PARTES=[
+  {imgs:["1-base"],z:-160,y:13,r:0,rot:{left:"98%",top:"90%"},t:"Base",s:"acrílico preto"},
+  {imgs:["2-acrilico"],z:-30,y:0,r:-2,rot:{left:"95%",top:"32%"},t:"Chapa de acrílico",s:"cortada no formato da arte"},
+  {imgs:["3-impressao-preta","4-impressao-cor"],z:120,y:-5,r:2,rot:{left:"90%",top:"8%"},t:"Impressão em cores",s:"a identidade do seu evento"},
+];
+const CP_CAMS=["1-base","2-acrilico","3-impressao-preta","4-impressao-cor"];
+const CP_COLS=9,CP_ROWS=7,CP_CC=4,CP_CR=3;let CPL;
+function montaCapa(){
+  const W=innerWidth,H=innerHeight,m=W<900,T=m?W*.34:Math.max(W*.14,H*.22),G=m?8:14;
+  let h="",k=0;
+  for(let c=0;c<CP_COLS;c++){
+    const fixa=c===CP_CC,dur=48+((c*17)%5)*8;let col="";
+    for(let r=0;r<CP_ROWS;r++){
+      if(fixa&&r===CP_CR){col+=`<div class="cp-tile destaque" id="cpDestaque" style="width:${T}px;height:${T}px;margin-bottom:${G}px"><div class="cp-plano" id="cpPlano" style="opacity:0">${CP_CAMS.map(n=>`<img src="img/montagem/${n}.webp" alt="Troféu em acrílico Guarart">`).join("")}</div></div>`;continue}
+      col+=`<div class="cp-tile" data-d="${Math.hypot(c-CP_CC,r-CP_CR).toFixed(2)}" style="width:${T}px;height:${T}px;margin-bottom:${G}px"><img src="${CP_FOTOS[k++%CP_FOTOS.length]}" alt=""></div>`;
+    }
+    h+=`<div class="cp-coluna${fixa?"":" anda"}${c%2?" desce":""}" style="--dur:${dur}s;margin-right:${G}px">${fixa?col:col+col}</div>`;
+  }
+  $("cpMosaico").innerHTML=h;
+  CPL={W,H,T,cx:CP_CC*(T+G)+T/2,cy:CP_CR*(T+G)+T/2,S0:(m?Math.min(W*.74,H*.36):Math.min(H*.8,W*.48))/T,S1:m?.62:.92,
+       X0:m?W*.5:W*.67,Y0:m?H*.3:H*.53,X1:m?W*.5:W*.6,Y1:m?H*.3:H*.5};
+  const lado=T*CPL.S0;Object.assign($("cpCena").style,{left:CPL.X0-lado/2+"px",top:CPL.Y0-lado/2+"px",width:lado+"px",height:lado+"px"});
+}
+$("cpTrofeu").insertAdjacentHTML("beforeend",CP_PARTES.map(p=>`<div class="cp-cam">${p.imgs.map(n=>`<img src="img/montagem/${n}.webp" alt="">`).join("")}<div class="cp-rot" style="left:${p.rot.left};top:${p.rot.top}"><i></i><div>${p.t}<small>${p.s}</small></div></div></div>`).join(""));
+montaCapa();let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(montaCapa,120)});
+const cpClamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),cpFx=(p,a,b)=>cpClamp((p-a)/(b-a)),cpEase=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,cpLerp=(a,b,t)=>a+(b-a)*t;
+let capaNoite=false;
+function renderCapa(p){
+  const {cx,cy,S0,S1,X0,Y0,X1,Y1}=CPL,t=performance.now()/1000,lerp=cpLerp,fx=cpFx,ease=cpEase;
+  const m=ease(fx(p,.02,.24));
+  $("cpTrofeu").style.transform=`rotateY(${lerp(-32,0,m)}deg) rotateX(${lerp(12,0,m)}deg) rotateZ(${lerp(-3,0,m)}deg)`;
+  document.querySelectorAll(".cp-cam").forEach((c,i)=>{const P=CP_PARTES[i],f=Math.sin(t*1.1+i*1.3)*5*(1-m);
+    c.style.transform=`translate3d(0,${lerp(P.y,0,m)}%,${lerp(P.z,0,m)}px) translateY(${f}px) rotateZ(${lerp(P.r,0,m)}deg)`;
+    c.querySelector(".cp-rot").style.opacity=1-fx(p,.08,.18)});
+  $("cpSombra").style.opacity=fx(p,.14,.26);
+  const z=ease(fx(p,.26,.74)),s=Math.exp(lerp(Math.log(S0),Math.log(S1),z));
+  $("cpMosaico").style.transform=`translate(${lerp(X0,X1,z)-cx*s}px,${lerp(Y0,Y1,z)-cy*s}px) scale(${s})`;
+  $("cpDestaque").style.setProperty("--b",fx(z,0,.3));
+  const troca=p>=.255;$("cpCena").style.visibility=troca?"hidden":"visible";$("cpPlano").style.opacity=troca?1:0;
+  $("cpEstudio").style.opacity=1-fx(z,.05,.4);$("cpVeu").style.opacity=fx(z,.2,.5);
+  document.querySelectorAll(".cp-tile[data-d]").forEach(e=>{const d=+e.dataset.d;e.style.opacity=lerp(0,1,fx(z,.08+d*.05,.48+d*.06))});
+  const n=fx(z,.18,.42),cor=(a,b)=>`rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*n)).join(",")})`;
+  capaNoite=n>.5;document.body.classList.toggle("cp-noite",capaNoite);
+  $("cpTexto").style.color=cor([35,31,26],[245,240,232]);$("cpSub").style.color=cor([58,51,43],[217,209,198]);
+  $("cpH2").style.opacity=1-fx(z,.12,.3);$("cpH2").style.transform=`translateY(${-16*fx(z,.12,.3)}px)`;
+  $("cpH1").style.opacity=fx(z,.3,.5);$("cpH1").style.transform=`translateY(${16*(1-fx(z,.3,.5))}px)`;
+  document.body.classList.toggle("cp-rodando",p>.74);
+  $("cpRole").style.opacity=1-fx(p,.02,.1);
+}
+const capaEl=$("capa");let cpAlvo=0,cpAtual=0;
+const cpProg=()=>{const r=capaEl.getBoundingClientRect();return cpClamp(-r.top/(capaEl.offsetHeight-innerHeight))};
+addEventListener("scroll",()=>{cpAlvo=cpProg()},{passive:true});
+const cpP=new URLSearchParams(location.search).get("p");
+(function cpLoop(){if(cpP!==null)renderCapa(+cpP);else{cpAtual+=(cpAlvo-cpAtual)*.19;if(Math.abs(cpAlvo-cpAtual)<.0004)cpAtual=cpAlvo;if(cpAtual<1||cpAlvo<1)renderCapa(cpAtual)}requestAnimationFrame(cpLoop)})();
+
+/* ===================== 2. PROVA ===================== */
+// nomes tirados de trabalhos publicados no Instagram da Guarart (validar a lista com a loja)
+// logos oficiais dos clientes, na cor original (arquivos em img/lp/marcas; originais em origem/marcas)
+const MARCAS=[{n:"Unimed Guaratinguetá",logo:"unimed.svg"},{n:"Repsol",logo:"repsol.svg"},{n:"Ambev Comercial Atlântica",logo:"ambev.png"},{n:"Colégio Fênix",logo:"fenix.png"},{n:"Himaflex",logo:"himaflex.png"},{n:"Itaguará Country Clube",logo:"itaguara.png"},{n:"Serramar",logo:"serramar.png"},{n:"L'Arena Beach Club",logo:"larena.png",alto:1},{n:"Xtrack Guaratinguetá",logo:"xtrack.png"},{n:"Apex Centro de Pesquisa",logo:"apex.png",alto:1}];
+const marcasHTML=MARCAS.map(m=>`<span class="marca">${m.logo?`<img src="img/lp/marcas/${m.logo}" alt="${m.n}"${m.alto?' class="alto"':""}>`:m.n}</span>`).join("");$("marcas").innerHTML=marcasHTML+marcasHTML;
+
+/* ===================== 3. MANIFESTO: palavras acendem ===================== */
+const frase=$("frase");frase.innerHTML=frase.textContent.split(" ").map(w=>`<span>${w}</span>`).join(" ");
+const palavras=[...frase.children];
+
+/* ===================== 4. PARA QUEM É ===================== */
+const IG=n=>`img/lp/ig/${n}.webp`,PR=n=>`img/lp/prod/${n}.webp`;
+const PUBLICOS=[
+  {t:"Eventos e esportes",h:"Campeonatos, torneios e premiações.",p:"Troféus e medalhas exclusivos para beach tennis, futebol, lutas, corridas e premiações internas. Cada peça é desenhada para o seu evento, com o nome, a data e a identidade dele.",
+   itens:[["Troféus em acrílico e MDF","1º ao 3º lugar"],["Medalhas personalizadas","kits por categoria"],["Placas de homenagem","com estojo"]],
+   fotos:[IG("Dd7ATxboyqh"),IG("DcwSMDXI1rN"),IG("DdFBBJKhdzC")],msg:"Olá! Vim pelo site e quero troféus ou medalhas para um evento."},
+  {t:"Empresas",h:"Brindes que fazem a sua marca ser lembrada.",p:"Roletas de prêmios para ações e feiras, cadernos, canecas, taças e bonés com a sua marca. Para clientes, equipes e eventos corporativos.",
+   itens:[["Roleta de prêmios","ações e feiras"],["Cadernos, canecas e taças","com a sua marca"],["Premiação interna","troféus e placas"]],
+   fotos:[IG("Dcy6B5yobWp"),IG("DbqThCForOf"),IG("DfkhWSYo2kz")],msg:"Olá! Vim pelo site e quero brindes para a minha empresa."},
+  {t:"Igrejas e lojas religiosas",h:"Lembranças de fé, perto de Aparecida.",p:"Nichos com LED, santinhas, lembranças de romaria e brindes para paróquias. Produção própria para varejo e revenda.",
+   itens:[["Nichos decorativos","com e sem LED"],["Santinhas e lembranças","romarias e festas"],["Revenda","condições para lojas"]],
+   fotos:[IG("DbobSbQBH6s"),PR("religiosos0"),PR("religiosos3")],msg:"Olá! Vim pelo site e tenho interesse em artigos religiosos."},
+  {t:"Comércio e fachadas",h:"A sua marca vista de longe.",p:"Letreiros, placas de sinalização, adesivos, banners e envelopamento de veículos, do projeto à instalação.",
+   itens:[["Letreiros e fachadas","acrílico e ACM"],["Placas de sinalização","salas e ambientes"],["Envelopamento","carros e caminhões"]],
+   fotos:[IG("DbYxppmoX_U"),IG("DcefJ6hoZgF"),IG("DbbFTMxIIq8")],msg:"Olá! Vim pelo site e quero um orçamento de comunicação visual."},
+];
+$("cena").innerHTML=PUBLICOS.map((p,i)=>`<div class="cena-grupo${i?"":" on"}" data-i="${i}"><div class="f1"><img src="${p.fotos[0]}" alt="${p.t}"></div><div class="f2"><img src="${p.fotos[1]}" alt=""></div><div class="f3"><img src="${p.fotos[2]}" alt=""></div></div>`).join("")+`<span class="cena-cont" id="cenaCont">01 / 04</span>`;
+$("publicos").innerHTML=PUBLICOS.map((p,i)=>`<article class="publico${i?"":" on"}" data-i="${i}">
+  <div class="foto-mob"><img src="${p.fotos[0]}" alt="${p.t}"></div>
+  <span class="num">0${i+1} · ${p.t}</span><h3>${p.h}</h3><p>${p.p}</p>
+  <ul>${p.itens.map(([a,b])=>`<li>${a}<span>${b}</span></li>`).join("")}</ul>
+  <a class="link-wa" href="${WA(p.msg)}" data-chat="${p.t}" target="_blank" rel="noopener">${waIco}Falar sobre isso no WhatsApp</a></article>`).join("");
+
+/* ===================== 5. CATÁLOGO ===================== */
+const CAT={
+  "Eventos e esportes":[
+    {n:"Troféu em acrílico",s:"Desenho exclusivo",f:["img/lp/cat/trofeu-1-frente.webp","img/lp/cat/trofeu-2-lado.webp","img/lp/cat/trofeu-3-costas.webp"]},
+    {n:"Medalha em acrílico",s:"Com fita personalizada",f:["img/lp/cat/medalha-1-frente.webp","img/lp/cat/medalha-2-lado.webp","img/lp/cat/medalha-3-costas.webp"]},
+    {n:"Troféu em MDF",s:"Corte a laser",f:[PR("eventos1")]},
+    {n:"Placa de homenagem",s:"Com estojo",f:[PR("eventos4")]},
+    {n:"Medalha em MDF",s:"Leve e econômica",f:[PR("eventos3")]},
+    {n:"Medalhas por categoria",s:"Kits para torneios",f:[IG("DdFBBJKhdzC")]},
+    {n:"Troféus em série",s:"1º ao 3º lugar",f:[IG("Dee-AFjI5IW")]},
+    {n:"Camiseta de evento",s:"Malha fria",f:[PR("eventos5")]},
+  ],
+  "Brindes personalizados":[
+    {n:"Roleta de prêmios",s:"Para ações e feiras",f:["img/lp/cat/roleta-1-frente.webp","img/lp/cat/roleta-2-lado.webp","img/lp/cat/roleta-3-costas.webp"]},
+    {n:"Caneca mágica",s:"Cerâmica",f:[PR("brindes0")]},
+    {n:"Caneca chopp alumínio",s:"680 ml",f:[PR("brindes1")]},
+    {n:"Caderno com caneta",s:"Capa personalizada",f:[PR("brindes3")]},
+    {n:"Caneca de vidro jateado",s:"475 ml",f:[PR("brindes4")]},
+    {n:"Boné trucker",s:"Com a sua marca",f:[PR("brindes5")]},
+    {n:"Canetas",s:"Várias cores",f:[PR("brindes2")]},
+    {n:"Taças personalizadas",s:"Festas e eventos",f:[IG("DfkhWSYo2kz")]},
+  ],
+  "Comunicação visual":[
+    {n:"Letreiro",s:"Fachadas e ambientes",f:[PR("visual3")]},
+    {n:"Placas de sinalização",s:"Salas e setores",f:[IG("DcefJ6hoZgF")]},
+    {n:"Adesivos em ambientes",s:"Paredes e vitrines",f:[PR("visual1")]},
+    {n:"Envelopamento de veículos",s:"Carros e caminhões",f:[PR("visual2")]},
+    {n:"Display de mesa",s:"Cardápios e avisos",f:[PR("visual4")]},
+    {n:"Banner",s:"Eventos e escolas",f:[PR("visual0")]},
+    {n:"Ímã automotivo",s:"Removível",f:[PR("visual5")]},
+    {n:"Placas Wi-Fi e QR code",s:"Para o balcão",f:[IG("Dcgys4iorpN")]},
+  ],
+  "Artigos religiosos":[
+    {n:"Nicho com LED",s:"20 cm",f:[PR("religiosos0")]},
+    {n:"Nicho caixote",s:"Decorativo",f:[PR("religiosos1")]},
+    {n:"Nicho base",s:"7,5 cm",f:[PR("religiosos2")]},
+    {n:"Santinha para carro",s:"N. Sra. Aparecida",f:[PR("religiosos3")]},
+    {n:"Nicho dourado",s:"Acabamento espelhado",f:[IG("DbobSbQBH6s")]},
+    {n:"Bloquinho religioso",s:"Lembrança",f:[PR("religiosos4")]},
+    {n:"Ecobag religiosa",s:"Personalizada",f:[PR("religiosos5")]},
+  ],
+};
+const abas=Object.keys(CAT);let abaAtual=abas[0];
+$("abas").innerHTML=abas.map(a=>`<button class="aba" role="tab" aria-selected="${a===abaAtual}">${a}</button>`).join("");
+const VISTAS=["Frente","Lado","Costas"];
+const seta=d=>`<svg viewBox="0 0 24 24"><path d="${d?"M9 6l6 6-6 6":"M15 6l-6 6 6 6"}"/></svg>`;
+function grade(){
+  $("grade").innerHTML=CAT[abaAtual].map((p,i)=>{const varias=p.f.length>1;return `<article class="card" style="animation-delay:${i*.05}s" data-n="${p.f.length}">
+    <div class="ft"><div class="slides">${p.f.map((f,k)=>`<img src="${f}" alt="${p.n}${varias?" - "+VISTAS[k]:""}" loading="lazy">`).join("")}</div>
+      ${varias?`<span class="vista">${VISTAS[0]}</span><button class="seta ant" aria-label="Foto anterior">${seta(0)}</button><button class="seta prox" aria-label="Próxima foto">${seta(1)}</button><div class="pontos">${p.f.map((_,k)=>`<i class="${k?"":"on"}"></i>`).join("")}</div>`:""}</div>
+    <div class="info"><span class="cat">${abaAtual}</span><h4>${p.n}</h4><p class="desc">${p.s}</p>
+      <div class="selos"><span>Personalizado</span><span>Sob medida</span><span>Envio para todo o Brasil</span></div>
+      <a class="orcar" href="${WA(`Olá! Vim pelo site e quero um orçamento de: ${p.n}.`)}" data-chat="${p.n}" target="_blank" rel="noopener">${waIco}<span class="t-l">Fazer orçamento</span><span class="t-c">Pedir orçamento</span></a></div></article>`}).join("");
+}
+$("grade").addEventListener("click",e=>{const b=e.target.closest(".seta");if(!b)return;const c=b.closest(".card"),n=+c.dataset.n;
+  let k=(+c.dataset.k||0)+(b.classList.contains("prox")?1:-1);k=(k+n)%n;c.dataset.k=k;
+  c.querySelector(".slides").style.transform=`translateX(${-k*100}%)`;c.querySelector(".vista").textContent=VISTAS[k];
+  c.querySelectorAll(".pontos i").forEach((d,x)=>d.classList.toggle("on",x===k))});
+$("abas").addEventListener("click",e=>{const b=e.target.closest(".aba");if(!b)return;abaAtual=b.textContent;[...$("abas").children].forEach(x=>x.setAttribute("aria-selected",x===b));grade()});
+grade();
+
+/* ===================== 6. RELIGIOSOS: loop ===================== */
+const FE=[[PR("religiosos0"),"Nicho com LED"],[IG("DbobSbQBH6s"),"Nicho dourado"],[PR("religiosos1"),"Nicho caixote"],[PR("religiosos3"),"Santinha para carro"],[PR("religiosos2"),"Nicho base"],[PR("religiosos4"),"Bloquinho religioso"],[PR("religiosos5"),"Ecobag religiosa"],[IG("DboJ5o0lIdD"),"Troféus Talento de Ouro, Aparecida"]];
+const feHTML=FE.map(([s,n])=>`<div class="peca-loop"><div class="ft"><img src="${s}" alt="${n}" loading="lazy"></div><span>${n}</span></div>`).join("");$("loopFe").innerHTML=feHTML+feHTML;
+
+/* ===================== 7. TRABALHOS ===================== */
+const OBRAS1=["DcwSMDXI1rN","Dee-AFjI5IW","DbYxppmoX_U","Dcy6B5yobWp","DboJ5o0lIdD","DfAbYMMIYqX","DbYoAePoOi0"];
+const OBRAS2=["Dd7ATxboyqh","DcefJ6hoZgF","DbqThCForOf","DdFBBJKhdzC","DbbFTMxIIq8","DfkhWSYo2kz","Dcgys4iorpN","DbobSbQBH6s"];
+const obras=l=>{const h=l.map(n=>`<div class="obra"><img src="${IG(n)}" alt="Trabalho da Guarart" loading="lazy"></div>`).join("");return h+h};
+$("obras1").innerHTML=obras(OBRAS1);$("obras2").innerHTML=obras(OBRAS2);
+
+/* ===================== 9. DEPOIMENTOS: só conteúdo real ===================== */
+// Google (avaliações públicas da Guarart no Maps), Instagram (comentários nos posts) e WhatsApp (post "Feedback que nos inspira")
+const estrela=(c="#FBBC04")=>`<svg viewBox="0 0 24 24"><path fill="${c}" d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>`;
+$("estNota").innerHTML=estrela().repeat(4)+`<svg viewBox="0 0 24 24"><defs><linearGradient id="meia"><stop offset=".6" stop-color="#FBBC04"/><stop offset=".6" stop-color="#DADCE0"/></linearGradient></defs><path fill="url(#meia)" d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>`;
+const gLogo=`<svg class="gl" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>`;
+const igLogo=`<svg class="ig" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="#262626"/></svg>`;
+const cor=`<svg class="cor" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.1 0 3.4 1.2 4 2.2.6-1 1.9-2.2 4-2.2 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg>`;
+const CORES=["#1A73E8","#E8710A","#188038","#A142F4","#D93025","#12B5CB","#9334E6"];
+const G=[
+  ["Laura V.",5,"um ano atrás","Ótimo atendimento desde a rapidez e eficiência pelo WhatsApp até na hora de buscar pessoalmente as etiquetas que pedi para personalizar. As etiquetas ficaram lindas e bem nítidas. Ficaram prontas bem rápido. Super recomendo."],
+  ["Priscilla C.",5,"4 anos atrás","Produzo festivais e eventos culturais e eles são ótimos para negociações de compras em alto volume! A qualidade dos produtos é impecável e até mesmo o dono faz questão de atender bem os clientes e acompanhar a satisfação. Indico sempre!"],
+  ["Itamar F.",4,"um ano atrás","Atendimento nota 10 e zero dificuldade para entender o projeto pretendido e com preço muito bom."],
+  ["Saluar M.",5,"11 meses atrás","Produtos de excelente qualidade, com entrega em curto espaço de tempo."],
+  ["Mônica L.",5,"um ano atrás","Gosto muito do trabalho do Paulo (Guarart). E o preço sempre é o melhor."],
+  ["Bruno R.",5,"5 anos atrás","Muito bom, são atenciosos e atendem bem, entregam no prazo. Ficaram muito boas as lembrancinhas."],
+  ["Tisushi A.",5,"4 anos atrás","Ótimo atendimento, material de primeira, pessoa honesta! Indico!"],
+];
+const I=[
+  ["beautyhair.lz","Trabalho perfeito! Eu amei!!!","16 sem","DbYxppmoX_U"],
+  ["raquete.altabeach","O fornecedor que tem os produtos excelentes e nunca deixam de ser profissionais.","14 sem","DcEcjz1IWeh"],
+  ["x.arenaguara","Ficou perfeito!","11 sem","DcwSMDXI1rN"],
+  ["raquete.altabeach","Trabalho excelente!!!","10 sem","DdFBBJKhdzC"],
+];
+const Wc=[
+  [["Boa tarde, Paulo","13:50"],["Passando para agradecer o trabalho incrível de vocês","13:51"],["Sempre recebemos muitos elogios graças ao trabalho impecável de vocês","13:52"]],
+  [["adorei","16:00"],["muito obrigada por sempre serem tão caprichosos e atenciosos","16:00"]],
+  [["opa, já estou indo buscar","16:30",1],["obrigado pela facilidade do atendimento","16:30",1]],
+];
+const cardG=([n,e,q,t],k)=>`<div class="dc g"><div class="top"><div class="av" style="background:${CORES[k%CORES.length]}">${n[0]}</div><div><div class="nm">${n}</div><div class="sub2">Avaliação no Google</div></div>${gLogo}</div>
+  <div class="linha"><span class="est">${estrela().repeat(e)}${estrela("#DADCE0").repeat(5-e)}</span>${q}</div><p>${t}</p></div>`;
+const cardI=([u,t,q,post])=>`<div class="dc i"><div class="post"><img src="${IG(post)}" alt="">${"<span>Comentou em um post de <b>guarart_personalizados</b></span>"}${igLogo}</div>
+  <div class="com"><div class="av"><span>${u[0].toUpperCase()}</span></div><div class="tx"><b>${u}</b>${t}<div class="meta"><span>${q}</span><span>Responder</span></div></div>${cor}</div></div>`;
+const cardW=(c)=>`<div class="dc w"><div class="wt"><div class="av">C</div><div>Cliente<small>mensagem recebida pela Guarart</small></div>${waIco}</div>
+  <div class="ms">${c.map(([t,h,eu])=>`<div class="msg${eu?" minha":""}">${t}<small>${h}</small></div>`).join("")}</div></div>`;
+const linha1=[cardG(G[0],0),cardI(I[0]),cardW(Wc[0]),cardG(G[1],1),cardI(I[1]),cardG(G[2],2),cardW(Wc[1])].join("");
+const linha2=[cardI(I[2]),cardG(G[3],3),cardW(Wc[2]),cardG(G[4],4),cardI(I[3]),cardG(G[5],5),cardG(G[6],6)].join("");
+$("mural1").innerHTML=linha1+linha1;$("mural2").innerHTML=linha2+linha2;
+
+/* ===================== rolagem: revelações, frase, para quem é, passos ===================== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}}),{rootMargin:"0px 0px -10% 0px"});
+document.querySelectorAll("[data-rv]").forEach(el=>io.observe(el));
+// contador do ano
+const conta=document.querySelector("[data-conta]");let contou=false;
+new IntersectionObserver(([e])=>{if(e.isIntersecting&&!contou){contou=true;const a=+conta.dataset.de,b=+conta.dataset.conta,t0=performance.now();
+  (function f(t){const k=Math.min(1,(t-t0)/1400),v=Math.round(a+(b-a)*(1-Math.pow(1-k,3)));conta.textContent=v;if(k<1)requestAnimationFrame(f)})(t0)}}).observe(conta);
+
+const publicos=[...document.querySelectorAll(".publico")],grupos=[...document.querySelectorAll(".cena-grupo")],passos=[...document.querySelectorAll(".passo")];
+let ativo=0;
+function rolagem(){
+  const H=innerHeight,y=scrollY;
+  $("topo").classList.toggle("rolou",y>10);
+  // cabeçalho escuro sobre seções escuras
+  const escuro=[...document.querySelectorAll(".manifesto,.fe,.depo")].some(s=>{const r=s.getBoundingClientRect();return r.top<40&&r.bottom>40});
+  $("topo").classList.toggle("escuro",escuro||capaNoite);
+  // frase: acende palavra por palavra
+  const r=frase.getBoundingClientRect(),k=Math.min(1,Math.max(0,(H*.85-r.top)/(r.height+H*.45)));
+  const n=Math.round(k*palavras.length);palavras.forEach((w,i)=>w.classList.toggle("on",i<n));
+  // para quem é: o bloco mais perto do centro manda na cena
+  let melhor=0,dist=1e9;publicos.forEach((p,i)=>{const b=p.getBoundingClientRect(),d=Math.abs(b.top+b.height/2-H/2);if(d<dist){dist=d;melhor=i}});
+  if(melhor!==ativo){ativo=melhor;publicos.forEach((p,i)=>p.classList.toggle("on",i===ativo));grupos.forEach((g,i)=>g.classList.toggle("on",i===ativo));$("cenaCont").textContent=`0${ativo+1} / 04`}
+  // passos: linha enche conforme rola
+  const pr=$("passos").getBoundingClientRect(),kp=Math.min(1,Math.max(0,(H*.75-pr.top)/(pr.height*.9)));
+  $("passos").style.setProperty("--prog",kp);passos.forEach((p,i)=>p.classList.toggle("on",kp>=i/2-.02&&kp>0));
+}
+addEventListener("scroll",rolagem,{passive:true});rolagem();setInterval(()=>{if(scrollY<innerHeight*3)rolagem()},250);
+
+// movimento leve: capa segue o mouse, santinha flutua com a rolagem
+(function loop(){
+  const s=$("santa").getBoundingClientRect();if(s.top<innerHeight&&s.bottom>0){const k=(s.top+s.height/2-innerHeight/2)/innerHeight;$("santa").style.transform=`translateY(${k*-60}px)`}
+  requestAnimationFrame(loop)})();
+
+/* ===================== ATENDIMENTO SIMULADO (fluxo fixo, sem IA) ===================== */
+const chat=$("chat"),corpo=$("chatCorpo"),op=$("chatOp");const R={};let iniciou=false;
+const fala=(t,quem="bot")=>{const d=document.createElement("div");d.className="m "+quem;d.textContent=t;corpo.appendChild(d);corpo.scrollTop=corpo.scrollHeight};
+const digita=ms=>new Promise(r=>{const d=document.createElement("div");d.className="digitando";d.innerHTML="<i></i><i></i><i></i>";corpo.appendChild(d);corpo.scrollTop=corpo.scrollHeight;setTimeout(()=>{d.remove();r()},ms)});
+const botoes=(lista,cb)=>{op.innerHTML="";lista.forEach(t=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{op.innerHTML="";fala(t,"eu");cb(t)};op.appendChild(b)})};
+const campo=(ph,cb)=>{op.innerHTML=`<form><input placeholder="${ph}" required><button class="enviar" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21 23 12 2 3v7l15 2-15 2z"/></svg></button></form>`;
+  const f=op.querySelector("form");f.querySelector("input").focus();f.onsubmit=e=>{e.preventDefault();const v=f.querySelector("input").value.trim();if(!v)return;op.innerHTML="";fala(v,"eu");cb(v)}};
+const escolhe=(lista,ph,cb)=>botoes([...lista,"Outros"],t=>{if(t==="Outros"){(async()=>{await digita(500);fala("Pode escrever:");campo(ph,cb)})()}else cb(t)});
+let geracao=0;
+async function fluxo(produto){
+  const g=++geracao,vivo=()=>g===geracao;
+  corpo.innerHTML="";op.innerHTML="";for(const k in R)delete R[k];
+  const pergunta=async(t,ms=800)=>{await digita(ms);if(vivo())fala(t);return vivo()};
+  const depoisDoProduto=async t=>{R.frente=t;
+    if(!await pergunta("Ótimo. Mais ou menos quantas peças?"))return;
+    escolhe(["1 a 10","10 a 50","50 a 200","Mais de 200"],"Quantidade",async q=>{R.qtd=q;
+      if(!await pergunta("Para quando você precisa? Pode mandar o dia exato."))return;
+      campo("Ex.: 15/12, ou sem data definida",async d=>{R.data=d;
+        if(!await pergunta("Perfeito. Como podemos te chamar?"))return;
+        campo("Seu nome",async n=>{R.nome=n;
+          if(!await pergunta(`Obrigado, ${n}! Já deixei o seu pedido pronto. Toque abaixo para continuar a conversa com a nossa equipe no WhatsApp.`,900))return;
+          const msg=`Olá! Sou ${R.nome}. Vim pelo site e quero um orçamento.\n• Produto: ${R.frente}\n• Quantidade: ${R.qtd}\n• Para quando: ${R.data}`;
+          op.innerHTML=`<a class="btn final-wa" href="${WA(msg)}" target="_blank" rel="noopener">${waIco}Continuar no WhatsApp</a>`;
+        })})})};
+  if(!await pergunta("Olá! Que bom ter você aqui. Sou o atendimento da Guarart.",700))return;
+  if(produto){
+    if(!await pergunta(`Vi que você quer um orçamento de: ${produto}.`))return;
+    depoisDoProduto(produto);
+  }else{
+    if(!await pergunta("O que você quer criar?",900))return;
+    escolhe(["Troféus e medalhas","Brindes para empresa","Comunicação visual","Artigos religiosos"],"Qual produto você procura?",depoisDoProduto);
+  }
+}
+function abreChat(produto){
+  chat.classList.add("aberto");$("waFab").querySelector(".ponto")?.remove();
+  // com produto: começa a conversa já com ele; sem produto: continua a conversa que estiver aberta
+  if(produto||!iniciou){iniciou=true;fluxo(produto)}
+}
+/* notificação: após 5 s, som curto + bolinha com "1" (o navegador só toca som depois do primeiro clique ou toque na página) */
+let audioCtx=null;
+const liberaSom=()=>{try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume()}catch(e){}};
+["pointerdown","keydown","touchstart"].forEach(ev=>addEventListener(ev,liberaSom,{once:true,passive:true}));
+function somNotificacao(){
+  try{liberaSom();if(!audioCtx||audioCtx.state!=="running")return;
+    const t=audioCtx.currentTime;
+    [[880,0],[1320,.12]].forEach(([f,d])=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type="sine";o.frequency.value=f;
+      g.gain.setValueAtTime(0,t+d);g.gain.linearRampToValueAtTime(.18,t+d+.015);g.gain.exponentialRampToValueAtTime(.001,t+d+.35);
+      o.connect(g).connect(audioCtx.destination);o.start(t+d);o.stop(t+d+.4)});
+  }catch(e){}
+}
+setTimeout(()=>{if(chat.classList.contains("aberto"))return;$("waPonto").classList.add("on");$("waFab").classList.add("chama");somNotificacao()},5000);
+$("waFab").onclick=()=>{if(chat.classList.contains("aberto"))chat.classList.remove("aberto");else abreChat("")};
+document.addEventListener("click",e=>{const a=e.target.closest("[data-chat]");if(!a)return;e.preventDefault();abreChat(a.dataset.chat)});
+$("chatFecha").onclick=()=>chat.classList.remove("aberto");
+// teste: ?y=1234 rola até a posição
+const QS=new URLSearchParams(location.search),sec=QS.get("sec");const yy=sec?document.querySelector(sec).offsetTop+(+QS.get("d")||0):QS.get("y");if(yy){document.documentElement.style.overflow="hidden";document.body.style.transform=`translateY(${-yy}px)`}
+</script>
+</body>
+</html>
